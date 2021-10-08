@@ -1,0 +1,79 @@
+<!-- For filter, loop through the array of objects filer only if certain property matches your condition -->
+<!-- Maintain a separate array for cart and once user clicks add to cart push that object to that array (Similar logic on how we did in react) -->
+
+<!-- Pagination do on your own. (Logic similar to how we did in react) -->
+<html>
+  <head>
+    <title>PLP PAGE</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.js"
+      integrity="sha512-2AL/VEauKkZqQU9BHgnv48OhXcJPx9vdzxN1JrKDVc4FPU/MEE/BZ6d9l0mP7VmvLsjtYwqiYQpDskK9dG8KBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
+      integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Knockout Assessment</h1>
+      <div>
+        <select data-bind="click: filterPrice" id="priceDropDown">
+          <option selected disabled hidden>Select Price Range</option>
+          <option value="10000-20000">10,000 - 20,000</option>
+          <option value="20000-40000">20,000 - 40,000</option>
+          <option value="40000-100000">40,000 - above</option>
+        </select>
+        <select data-bind="click: sortWithPrice" id="sortDropDown">
+          <option selected disabled hidden>Select Sort</option>
+          <option value="desc">Price High-Low</option>
+          <option value="asc">Price Low-High</option>
+        </select>
+      </div>
+    </header>
+
+    <div data-bind="visible: !hasBeenSubmitted()">
+      <div data-bind="foreach: availableProducts">
+        <div class="product_container">
+          <div class="product_mainDetails">
+            <span data-bind="click: $root.selectPhone"
+              ><h1 data-bind="text: mobileName"></h1
+            ></span>
+            <h6 class="categoryText" data-bind="text: category"></h6>
+            <span data-bind="click: $root.selectPhone"
+              ><img class="productImg" data-bind="attr: {src: imagePLP}"
+            /></span>
+          </div>
+          <div class="product_secondaryDetails">
+            <span
+              >Price:
+              <span data-bind="text: price"></span>
+            </span>
+            <span
+              >SKU:
+              <span data-bind="text: sku"></span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div data-bind="visible: hasBeenSubmitted">
+      <p data-bind="click: $root.goBack"><- Click to go Back</p>
+      <div data-bind="foreach: selectedProductDetails">
+        <img data-bind="attr: {src: imagePLP}" />
+        <h1 data-bind="text: mobileName"></h1>
+        <h3 data-bind="text: sku"></h3>
+        <h4 data-bind="text: category"></h4>
+        <p data-bind="text: price"></p>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
