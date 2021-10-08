@@ -15,11 +15,15 @@ header > h1 {
   margin-bottom: 20px;
 }
 
+body {
+  background: #ffc8c8;
+}
+
 .product_container {
   display: flex;
   align-items: center;
   margin: 5px 20px;
-  border: 1px solid #ccc;
+  border: 1px solid #fff;
 }
 
 .product_mainDetails {
@@ -45,4 +49,77 @@ header > h1 {
 .product_secondaryDetails {
   display: flex;
   flex-direction: column;
+  font-size: 18px;
+  font-weight: bold;
+  height: 100px;
+  justify-content: space-around;
+}
+
+.pages_container {
+  display: flex;
+  justify-content: center;
+}
+
+.page_block {
+  display: flex;
+  justify-content: center;
+}
+
+.pagesIcon {
+  margin: 0 5px;
+  height: 30px;
+  width: 40px;
+  background: hsl(0, 0%, 80%);
+}
+
+.jumpPage:hover {
+  cursor: pointer;
+}
+
+.pagesIcon:hover {
+  cursor: pointer;
+  background: hsl(0, 0%, 90%);
+}
+
+.detailPage {
+  display: flex;
+  margin: 70px 100px;
+}
+
+.detailPage_image {
+  height: 250px;
+  width: 300px;
+}
+
+.detailPage_details {
+  margin: 0 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.detailPage_category {
+  opacity: 0.5;
+}
+
+.back_button {
+  margin: 25px 25px;
+}
+
+.back_button:hover {
+  cursor: pointer;
+}
+
+.detailPage_buttons {
+  width: 150px;
+  height: 40px;
+  background: #2f3d50;
+  color: white;
+  transition: 100ms;
+}
+
+.detailPage_buttons:hover {
+  cursor: pointer;
+  background: #ffc8c8;
+  color: black;
 }

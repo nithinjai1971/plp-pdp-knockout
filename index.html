@@ -17,18 +17,18 @@
   </head>
   <body>
     <header>
-      <h1>Knockout Assessment</h1>
+      <h1>Flipkart</h1>
       <div>
         <select data-bind="click: filterPrice" id="priceDropDown">
           <option selected disabled hidden>Select Price Range</option>
+          <option value="10000-100000">Default</option>
           <option value="10000-20000">10,000 - 20,000</option>
           <option value="20000-40000">20,000 - 40,000</option>
           <option value="40000-100000">40,000 - above</option>
         </select>
         <select data-bind="click: sortWithPrice" id="sortDropDown">
-          <option selected disabled hidden>Select Sort</option>
-          <option value="desc">Price High-Low</option>
           <option value="asc">Price Low-High</option>
+          <option value="desc">Price High-Low</option>
         </select>
       </div>
     </header>
@@ -37,8 +37,8 @@
       <div data-bind="foreach: availableProducts">
         <div class="product_container">
           <div class="product_mainDetails">
-            <span data-bind="click: $root.selectPhone"
-              ><h1 data-bind="text: mobileName"></h1
+            <span data-bind="click: $root.selectPhone">
+              <h1 data-bind="text: mobileName"></h1
             ></span>
             <h6 class="categoryText" data-bind="text: category"></h6>
             <span data-bind="click: $root.selectPhone"
@@ -46,27 +46,57 @@
             /></span>
           </div>
           <div class="product_secondaryDetails">
-            <span
+            <div
               >Price:
               <span data-bind="text: price"></span>
-            </span>
-            <span
+            </div>
+            <div
               >SKU:
               <span data-bind="text: sku"></span>
-            </span>
+            </div>
+            <button class="detailPage_buttons" data-bind="click: $root.selectPhone">Details</button>
           </div>
         </div>
       </div>
+
+      <span class="page_block">
+        <span class="jumpPage" data-bind="click: previous">Prev</span>
+        <span class="pages_container" data-bind="foreach: totalPagesArray">
+          <p
+            class="pagesIcon"
+            data-bind="text: $data, click: $root.selectPage"
+          ></p>
+        </span>
+        <span class="jumpPage" data-bind="click: next">Next</span>
+      </span>
     </div>
 
     <div data-bind="visible: hasBeenSubmitted">
-      <p data-bind="click: $root.goBack"><- Click to go Back</p>
-      <div data-bind="foreach: selectedProductDetails">
-        <img data-bind="attr: {src: imagePLP}" />
-        <h1 data-bind="text: mobileName"></h1>
-        <h3 data-bind="text: sku"></h3>
-        <h4 data-bind="text: category"></h4>
-        <p data-bind="text: price"></p>
+      <button class="detailPage_buttons back_button" data-bind="click: $root.goBack"><- Click to go Back</button>
+      <div class="detailPage" data-bind="foreach: selectedProductDetails">
+        <img class="detailPage_image" data-bind="attr: {src: imagePLP}" />
+        <div class="detailPage_details">
+          <div>
+          <h1 data-bind="text: mobileName"></h1>
+          <h6 class="detailPage_category" data-bind="text: category"></h6>
+          </div>
+          <div>
+          <div>
+            SKU:
+            <span data-bind="text: sku"></span>
+          </div>
+          <div>
+            Price:
+            <span data-bind="text: price"></span>
+          </div>
+        </div>
+        <p data-bind="text: description"></p>
+          <div>
+            <div>
+              <button class="detailPage_buttons">Add to cart </button>
+              <button class="detailPage_buttons">Buy Now</button>
+            </div>
+        </div>
       </div>
     </div>
 
